@@ -1,9 +1,14 @@
 "use strict";
+var fs = require('fs');
 
-var sum = 0;
+var fileBuffer = fs.readFileSync(process.argv[2]);
+var str = fileBuffer.toString();
+var arr = str.split("")
 
-for (let i = 2; i < process.argv.length; i++){
-    sum += parseInt(process.argv[i], 10);
+var newlineSum = 0;
+
+for (let i = 0; i < arr.length; i++){
+    if (arr[i] == "\n") newlineSum++;
 }
 
-console.log(sum);
+console.log(newlineSum);
